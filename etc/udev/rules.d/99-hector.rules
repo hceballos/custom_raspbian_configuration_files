@@ -1,0 +1,7 @@
+KERNEL!="sd[a-z]", GOTO="media_by_label_auto_mount_end"
+# Mount the device
+ACTION=="add", SUBSYSTEM=="usb", RUN+="udisks --mount /Users/Hector/Documents/pi/%k"
+# Clean up after removal
+ACTION=="remove", SUBSYSTEM=="usb", RUN+="udisks --unmount /Users/Hector/Documents/pi/%k"
+# Exit
+LABEL="media_by_label_auto_mount_end"
